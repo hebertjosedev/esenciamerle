@@ -3,6 +3,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../database/firebase";
 import { CartContext } from "../../../context/CartContext";
 import { formatPrice } from "../../../helpers/number";
+import Loader from "../../atoms/Loader";
 
 const CardProduct = () => {
   const [productos, setProductos] = useState([]);
@@ -23,7 +24,7 @@ const CardProduct = () => {
     });
   }, []);
 
-  if (loading) return <h1>cargando...</h1>;
+  if (loading) return <Loader/>;
 
   return (
     <>

@@ -7,6 +7,10 @@
     margin: auto;
 }
 
+.header{
+    max-width: 1256px;
+}
+
 .titulo-404{
     font-size: 130px;
     border-right: 3px solid rgb(5, 5, 189);
@@ -62,6 +66,49 @@
     background-color: rgba(167, 35, 35, 0.939);
 }
 
+.contenedor-loader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/*
+Animación Rueda
+*/
+.loader{
+  animation: loader 2s infinite linear;
+  /* animation-duration: 2s infite;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; */
+  -webkit-animation: loader 2s infinite linear; /* Chrome, Safari, Opera */
+  -webkit-animation: loader 2s infinite linear; /* Chrome, Safari, Opera */
+  -webkit-animation: loader 2s infinite linear; /* Chrome, Safari, Opera */
+  -webkit-animation: loader 2s infinite linear; /* Chrome, Safari, Opera */
+  display: block;
+  margin: 0 auto;
+  height:150px;
+  width: 150px;
+  border-right: 0;
+  border-bottom: 0;
+  border-radius: 100px;
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes loader {
+  100% {
+    -ms-transform: rotate(360deg); /* IE 9 */
+    -webkit-transform: rotate(360deg); /* Chrome, Safari, Opera */ 
+    transform: rotate(360deg);
+  }
+}
+@keyframes loader{
+  100% {
+    -ms-transform: rotate(360deg); /* IE 9 */
+    -webkit-transform: rotate(360deg); /* Chrome, Safari, Opera */ 
+    transform: rotate(360deg);
+  }
+}
+
 @media (max-width: 576px) { 
     .titulo-404{
         border-bottom: 3px solid rgb(5, 5, 189);
@@ -75,4 +122,15 @@
     .pagina-error-mobile{
         flex-direction: column;
     }
+
+    .header{
+        position: fixed;
+        width: 100%;
+        background-color: white;
+    }
+
+    .cuadricula-productos{
+        padding-top: 80px;
+    }
+
 }

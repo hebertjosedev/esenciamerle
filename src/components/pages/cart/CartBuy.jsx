@@ -2,15 +2,24 @@ import { Link } from "react-router-dom";
 import { useContext} from "react";
 import { CartContext } from "../../../context/CartContext";
 import { formatPrice } from "../../../helpers/number";
+import { API_URL } from "../../../constants/env";
 
 const CartProduct = () => {
-  const { cart, clearCart, removeFromCart, createOrder } = useContext(CartContext);
+  const { cart, clearCart, removeFromCart } = useContext(CartContext);
 
   let value = 0;
   cart.forEach((c) => (value += c.price));
 
+  let newCart = [`Total de la compra: $${value}`]
+  let mensaje = "Orden: "
+  cart.map((product) => {
+    let price = `$${product.price.toString()}`
+    let name = `${product.name}`
+    newCart.unshift(name + " " + price + " ");
+  })
+
   return (
-    <>
+    <div className="max-w-2xl px-1">
       {cart.length === 0 ? (
         <div className="mb-3">
           <Link
@@ -21,13 +30,26 @@ const CartProduct = () => {
           </Link>
         </div>
       ) : (
-        <div className="mb-3">
-          <a
-            className="bg-red-500 text-white p-2 rounded-md hover:cursor-pointer"
-            onClick={() => clearCart()}
-          >
-            Vaciar carrito
-          </a>
+        <div className="flex justify-between items-center max-w-2xl mb-4 mt-4 px-5">
+          <div className="total text-xl">Total:{formatPrice(value)}</div>
+          <div className="flex items-center gap-2">
+            <div className="px-4">
+              <a
+                className="bg-red-500 text-white p-2 rounded-md hover:cursor-pointer"
+                onClick={() => clearCart()}
+              >
+                Vaciar carrito
+              </a>
+            </div>
+            <a>
+              <Link
+                className="bg-green-600 text-white p-2 rounded-md hover:cursor-pointer"
+                to={`${API_URL}${mensaje}${newCart}`}
+              >
+                Comprar
+              </Link>
+            </a>
+          </div>
         </div>
       )}
       {cart.map((product) => (
@@ -64,20 +86,7 @@ const CartProduct = () => {
           </div>
         </article>
       ))}
-      {cart.length !== 0 && (
-        <div>
-          <div className="total">Total:{formatPrice(value)}</div>
-          <div className="mt-3">
-            <a
-              className="bg-green-600 text-white p-2 rounded-md hover:cursor-pointer"
-              onClick={() => createOrder(console.log(cart))}
-            >
-              Crear orden
-            </a>
-          </div>
-        </div>
-      )}
-    </>
+    </div>
   );
 };
 

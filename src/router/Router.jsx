@@ -26,8 +26,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/carrito",
-        element: <CartBuy />
-      }
+        element: <CartBuy />,
+      },
     ],
   },
 ]);

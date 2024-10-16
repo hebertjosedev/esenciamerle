@@ -2,7 +2,6 @@ import { Outlet } from "react-router-dom";
 import MainMenu from "./molecules/header/MainMenu";
 import { CartContext } from "../context/CartContext";
 import { useState } from "react";
-import axios from "axios"
 
 const App = () => {
 
@@ -26,12 +25,7 @@ const App = () => {
     };
 
   const createOrder = () => {
-    let cartNew = []
-    cart.forEach(producto => cartNew.push(producto.name))
 
-    axios.post(
-      `https://api.whatsapp.com/send?phone=56972736028&text=${cartNew}`
-    );
   }
 
   return (
