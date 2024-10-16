@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.max-width{
+    max-width: 1256px;
+    margin: auto;
+}
+
+.titulo-404{
+    font-size: 130px;
+    border-right: 3px solid rgb(5, 5, 189);
+    padding-right: 5px;
+}
+
+.container-404{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.img{
+    width: 100px;
+}
+
+.menu-link:hover{
+    background-color: rgba(37, 36, 36, 0.198);
+    color: rgba(149, 9, 36, 1);
+    transition: 1s;
+}
+
+.active{
+    color: red;
+}
+
+.link-perfumes{
+    color: rgba(149, 9, 36, 1);
+}
+
+.link-perfumes:hover{
+    border-bottom: 1px solid rgba(149, 9, 36, 1);
+}
+
+.cuadricula-productos{
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    gap: 10.5px;
+    margin: 0;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 200px;
+}
+
+.boton:hover{
+    color: rgba(255, 255, 255, 0.899);
+    background-color: rgba(167, 35, 35, 0.939);
+}
+
+@media (max-width: 576px) { 
+    .titulo-404{
+        border-bottom: 3px solid rgb(5, 5, 189);
+        border-right: none;
+    }
+    
+    .contenedor-titulo{
+        margin: 0 64px;
+    }
+
+    .pagina-error-mobile{
+        flex-direction: column;
+    }
+}
