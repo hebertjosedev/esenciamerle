@@ -7,7 +7,7 @@ import CartBuy from "../components/pages/cart/CartBuy";
 import CardProductCosmetics from "../components/pages/products/CardProductCosmetics";
 import ProductDetail from "../components/pages/products/ProductDetail";
 import CreateProduct from "../components/pages/admin/CreateProduct";
-import LoginUser from "../components/pages/admin/LoginNew";
+import LoginUser from "../components/pages/admin/LoginUser";
 
 
 const router = createBrowserRouter([
