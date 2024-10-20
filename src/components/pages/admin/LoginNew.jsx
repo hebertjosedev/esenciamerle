@@ -4,7 +4,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-const LoginNew = () => {
+const LoginUser = () => {
   const nav = useNavigate();
 
   const [error, setError] = useState()
@@ -49,4 +49,4 @@ const LoginNew = () => {
   );
 };
 
-export default LoginNew
+export default LoginUser

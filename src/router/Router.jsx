@@ -6,8 +6,8 @@ import Home from "../components/pages/Home";
 import CartBuy from "../components/pages/cart/CartBuy";
 import CardProductCosmetics from "../components/pages/products/CardProductCosmetics";
 import ProductDetail from "../components/pages/products/ProductDetail";
-import LoginNew from "../components/pages/admin/LoginNew";
 import CreateProduct from "../components/pages/admin/CreateProduct";
+import LoginUser from "../components/pages/admin/LoginNew";
 
 
 const router = createBrowserRouter([
@@ -21,8 +21,8 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/login",
-        element: <LoginNew />,
+        path: "/login/user",
+        element: <LoginUser />,
       },
       {
         path: "/login/crear/producto",
