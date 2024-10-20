@@ -29,6 +29,9 @@ const MainMenu = () => {
               <li className="p-2 menu-link">
                 <NavLink to="/productos/cosmeticos">Cosmeticos</NavLink>
               </li>
+              <li className="p-2 menu-link">
+                <NavLink to="/iniciar/sesion">Admin</NavLink>
+              </li>
             </ul>
           </nav>
         </header>
