@@ -1,12 +1,14 @@
 import { Outlet } from "react-router-dom";
 import MainMenu from "./molecules/header/MainMenu";
 import { CartContext } from "../context/CartContext";
-import { useState } from "react";
-import axios from "axios"
+import { useEffect, useState } from "react";
 
 const App = () => {
 
-  const [cart, setCart] = useState([])
+  const cartInitial = JSON.parse(localStorage.getItem("cart")) || [];
+  // const admin = localStorage.getItem("user")
+
+  const [cart, setCart] = useState(cartInitial)
 
   const handleAgregar = (producto) => {
       setCart([...cart, producto]);
@@ -25,26 +27,35 @@ const App = () => {
       setCart(productRemove);
     };
 
-  const createOrder = () => {
-    let cartNew = []
-    cart.forEach(producto => cartNew.push(producto.name))
-
-    axios.post(
-      `https://api.whatsapp.com/send?phone=56972736028&text=${cartNew}`
-    );
+  const priceTotal = () => {
+      let value = 0;
+      cart.forEach((c) => (value += c.price));
+      return value
   }
 
+  useEffect(()=> {
+    localStorage.setItem("cart", JSON.stringify(cart))
+  },[cart])
+
+
   return (
-    <div>
-      <CartContext.Provider value={ {cart, handleAgregar, clearCart, removeFromCart, cantidadEnCarrito, createOrder } }>
+    <CartContext.Provider
+      value={{
+        cart,
+        handleAgregar,
+        clearCart,
+        removeFromCart,
+        cantidadEnCarrito,
+        priceTotal,
+      }}
+    >
         <div className="max-width">
           <MainMenu />
           <div className="">
             <Outlet />
           </div>
         </div>
-      </CartContext.Provider>
-    </div>
+    </CartContext.Provider>
   );
 }
 

@@ -2,32 +2,55 @@ import { Link } from "react-router-dom";
 import { useContext} from "react";
 import { CartContext } from "../../../context/CartContext";
 import { formatPrice } from "../../../helpers/number";
+import { API_URL } from "../../../constants/env";
+import { FaWhatsapp } from "react-icons/fa";
 
 const CartProduct = () => {
-  const { cart, clearCart, removeFromCart, createOrder } = useContext(CartContext);
+  const { cart, clearCart, removeFromCart, priceTotal } = useContext(CartContext);
 
-  let value = 0;
-  cart.forEach((c) => (value += c.price));
+
+
+  let newCart = [`Total de la compra: $${priceTotal()}`]
+  let mensaje = "Orden: "
+  cart.map((product) => {
+    let price = `$${product.price.toString()}`
+    let name = `${product.name}`
+    newCart.unshift(name + " " + price + " ");
+  })
 
   return (
-    <>
+    <div className="container-cart max-w-2xl px-1">
       {cart.length === 0 ? (
-        <div className="mb-3">
+        <div className="mt-4 ml-4">
           <Link
-            to="/productos"
+            to="/"
             className="bg-red-800 text-white p-2 rounded-md hover:cursor-pointer"
           >
             Ver productos
           </Link>
         </div>
       ) : (
-        <div className="mb-3">
-          <a
-            className="bg-red-500 text-white p-2 rounded-md hover:cursor-pointer"
-            onClick={() => clearCart()}
-          >
-            Vaciar carrito
-          </a>
+        <div className="flex justify-between items-center max-w-2xl mb-4 mt-4 px-5">
+          <div className="total text-xl">Total:{formatPrice(priceTotal())}</div>
+          <div className="flex items-center gap-2">
+            <a className="flex text-center">
+              <Link
+                className="bg-red-500 text-white p-2 rounded-md hover:cursor-pointer text-center w-20"
+                onClick={() => clearCart()}
+              >
+                Vaciar
+              </Link>
+            </a>
+            <a className="flex items-center">
+              <Link
+                className="flex items-center bg-green-600 text-white p-2 rounded-md hover:cursor-pointer"
+                to={`${API_URL}${mensaje}${newCart}`}
+                onClick={() => clearCart()}
+              >
+                Comprar <FaWhatsapp className="ml-1" />
+              </Link>
+            </a>
+          </div>
         </div>
       )}
       {cart.map((product) => (
@@ -38,7 +61,7 @@ const CartProduct = () => {
           <div className="flex rounded-lg overflow-hidden">
             <Link to={`/productos/${product.id}`}>
               <img
-                className="align-middle h-20 w-full object-cover"
+                className="align-middle h-40"
                 src={product.image}
                 alt={product.name}
               />
@@ -64,20 +87,7 @@ const CartProduct = () => {
           </div>
         </article>
       ))}
-      {cart.length !== 0 && (
-        <div>
-          <div className="total">Total:{formatPrice(value)}</div>
-          <div className="mt-3">
-            <a
-              className="bg-green-600 text-white p-2 rounded-md hover:cursor-pointer"
-              onClick={() => createOrder(console.log(cart))}
-            >
-              Crear orden
-            </a>
-          </div>
-        </div>
-      )}
-    </>
+    </div>
   );
 };
 

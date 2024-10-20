@@ -10,8 +10,8 @@ const MainMenu = () => {
 
   return (
     <>
-      <div>
-        <header className="flex justify-between">
+      <div className="">
+        <header className="header flex justify-between">
           <Link to="/">
             <Logo />
           </Link>
@@ -19,14 +19,15 @@ const MainMenu = () => {
             <ul className="flex p-4">
               <li className="p-2 menu-link">
                 <Link className="flex items-center" to="/carrito">
-                  <FaCartPlus className="mr-1" /> <span className="">{cart.length}</span>
+                  <FaCartPlus className="mr-1" />{" "}
+                  <span className="">{cart.length}</span>
                 </Link>
               </li>
               <li className="p-2 menu-link">
-                <NavLink to="/productos">Perfumes</NavLink>
+                <NavLink to="/productos/perfumes">Perfumes</NavLink>
               </li>
               <li className="p-2 menu-link">
-                <NavLink to="/cosmeticos">Cosmeticos</NavLink>
+                <NavLink to="/productos/cosmeticos">Cosmeticos</NavLink>
               </li>
             </ul>
           </nav>

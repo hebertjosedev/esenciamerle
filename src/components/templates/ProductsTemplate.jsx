@@ -3,8 +3,7 @@ import CardProduct from "../pages/products/CardProduct";
 const ProductsTemplate = () => {
   return (
     <>
-      <div>ProductsTemplate</div>
-      <div className="cuadricula-productos border border-sky-500 max-width pt-4">
+      <div className="cuadricula-productos bg-slate-50 shadow max-width pt-9 pb-16">
         <CardProduct />
       </div>
     </>

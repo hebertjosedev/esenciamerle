@@ -3,12 +3,14 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../database/firebase";
 import { CartContext } from "../../../context/CartContext";
 import { formatPrice } from "../../../helpers/number";
+import Loader from "../../atoms/Loader";
+import { Link } from "react-router-dom";
 
 const CardProduct = () => {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const { handleAgregar } = useContext(CartContext);
+  const { cart, removeFromCart, handleAgregar } = useContext(CartContext);
 
   useEffect(() => {
     const productosRef = collection(db, "productos");
@@ -23,21 +25,36 @@ const CardProduct = () => {
     });
   }, []);
 
-  if (loading) return <h1>cargando...</h1>;
+  if (loading) return <Loader />;
 
   return (
     <>
       {productos.map((producto) => (
         <div key={producto.id} className="card p-4 shadow">
-          <img src={producto.image} alt={producto.name} width="150px" />
+          <Link to={`/productos/perfumes/${producto.id}`}>
+            <img src={producto.image} alt={producto.name} width="150px" />
+          </Link>
           <span className="">{producto.name}</span>
           <span>{formatPrice(producto.price)}</span>
-          <button
-            className="bg-red-800 text-white p-1 mt-5 boton"
-            onClick={() => {handleAgregar(producto)}}
-          >
-            Agregar al carrito
-          </button>
+          {!cart.find((c) => c.id === producto.id) ? (
+            <button
+              className="bg-red-800 text-white p-1 mt-5 boton"
+              onClick={() => {
+                handleAgregar(producto);
+              }}
+            >
+              Agregar al carrito
+            </button>
+          ) : (
+            <button
+              className="bg-red-500 text-white p-1 mt-5 boton"
+              onClick={() => {
+                removeFromCart(producto);
+              }}
+            >
+              Remover del carrito
+            </button>
+          )}
         </div>
       ))}
     </>
