@@ -24,10 +24,10 @@ const MainMenu = () => {
                 </Link>
               </li>
               <li className="p-2 menu-link">
-                <NavLink to="/productos">Perfumes</NavLink>
+                <NavLink to="/productos/perfumes">Perfumes</NavLink>
               </li>
               <li className="p-2 menu-link">
-                <NavLink to="/cosmeticos">Cosmeticos</NavLink>
+                <NavLink to="/productos/cosmeticos">Cosmeticos</NavLink>
               </li>
             </ul>
           </nav>
