@@ -50,6 +50,29 @@
     transition: 0.5s;
 }
 
+nav .menu{
+    display: none;
+    position: absolute;
+    top: 0;
+    right: -100px;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 200px;
+    height: 32px;
+}
+
+nav .menu span {
+    height: 8px;
+    width: 40px;
+    background-color: gray;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+.menu-responsive-cerrar{
+    display: none;
+}
+
 .alto-full{
     height: 100vh;
 }
@@ -63,7 +86,7 @@
 }
 
 .link-perfumes:hover{
-    border-bottom: 1px solid rgba(149, 9, 36, 1);
+    border: 1px solid rgba(149, 9, 36, 1);
 }
 
 .cuadricula-productos{
@@ -269,6 +292,57 @@ Animación Rueda
 
     .product-detail-info{
         padding: 0;
+    }
+
+    nav .menu{
+        display: flex;
+        top: 0;
+        right: -100px;
+    }
+
+    .nav {
+        flex-direction: column;
+        align-items: start;
+        position: relative;
+        padding-top: 30px;
+    }
+
+    .nav ul{
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding: 2px 0;
+        margin-bottom: 1px;
+    }
+
+    .nav ul li{
+        width: 100vw;
+        padding-left: 20px;
+    }
+
+    .nav ul.open {
+        display: flex;
+        background-color: white;
+    }
+
+    .carrito{
+        position: absolute;
+        right: 130px;
+    }
+
+    .carrito-responsive{
+        position: absolute;
+        right: 100px;
+        display: flex;
+    }
+
+    .menu-responsive-cerrar{
+        display: flex;
+        position: absolute;
+        right: 20px;
+        font-size: 25px;
+        color: brown;
+        padding: 5px;
     }
 
 

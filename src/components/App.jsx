@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import MainMenu from "./molecules/header/MainMenu";
 import { CartContext } from "../context/CartContext";
 import { useEffect, useState } from "react";
+import { UserProvider } from "../context/LoginContext";
 
 const App = () => {
 
@@ -49,12 +50,14 @@ const App = () => {
         priceTotal,
       }}
     >
+      <UserProvider>
         <div className="max-width">
           <MainMenu />
           <div className="">
             <Outlet />
           </div>
         </div>
+      </UserProvider>
     </CartContext.Provider>
   );
 }

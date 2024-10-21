@@ -1,16 +1,9 @@
-import { createContext, useEffect, useState } from "react";
-import { token } from "../helpers/auth";
+import { createContext, useState } from "react";
 
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
   const [userData, setUserData] = useState();
-
-  useEffect(() => {
-    if (token) {
-        console.log(token)
-    }
-  }, []);
 
   return (
     <UserContext.Provider value={{ userData, setUserData }}>
