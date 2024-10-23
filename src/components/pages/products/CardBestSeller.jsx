@@ -15,8 +15,8 @@ const CardProductCosmetics = () => {
 
   useEffect(() => {
     const productosRef = query(
-      collection(db, "productos"),
-      where("sales", ">", 6)
+      collection(db, "perfumes"),
+      where("sales", ">", 3)
     );
     getDocs(productosRef).then((resp) => {
       setLoading(false);
@@ -29,8 +29,8 @@ const CardProductCosmetics = () => {
   }, []);
     useEffect(() => {
       const cosmeticsRef = query(
-        collection(db, "cosmetics"),
-        where("sales", ">", 4)
+        collection(db, "cosmeticos"),
+        where("sales", ">", 3)
       );
       getDocs(cosmeticsRef).then((resp) => {
         setLoading(false);

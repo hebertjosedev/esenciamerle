@@ -18,16 +18,11 @@ const LoginUser = () => {
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
         setToken(user.uid)
         nav("/")
-        // ...
       })
       .catch((error) => {
-        console.log(error)
-        console.log(error.code)
-        console.log(error.message)
         setError(error.code)
       });
   }
