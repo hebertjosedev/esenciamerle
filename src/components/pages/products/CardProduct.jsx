@@ -13,7 +13,7 @@ const CardProduct = () => {
   const { cart, removeFromCart, handleAgregar } = useContext(CartContext);
 
   useEffect(() => {
-    const productosRef = collection(db, "productos");
+    const productosRef = collection(db, "perfumes");
 
     getDocs(productosRef).then((resp) => {
       setLoading(false);

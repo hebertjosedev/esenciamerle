@@ -12,7 +12,7 @@ const CardProductCosmetics = () => {
   const { handleAgregar } = useContext(CartContext);
 
   useEffect(() => {
-    const productosRef = collection(db, "cosmetics");
+    const productosRef = collection(db, "cosmeticos");
 
     getDocs(productosRef).then((resp) => {
       setLoading(false);
